@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import UserList from './components/UserList'
+import UserForm from './components/UserForm'
 
 function App() {
 
@@ -39,25 +41,16 @@ function App() {
 
   return (
     <div>
-      <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Full name"
+      <UserForm  
+        name={name}
+        setName={setName}
+        email={email}
+        setEmail={setEmail}
+        handleSubmit={handleSubmit}
       />
-
-      <input
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <button onClick={handleSubmit}>Add User</button>
 
       <h1>Users</h1>
-      {users.map(user => (
-        <div key={user.id}>
-          <p>{user.name} - {user.email}</p>
-        </div>
-      ))}
+      <UserList users={users} />
     </div>
   )
 }
